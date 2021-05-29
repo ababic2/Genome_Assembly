@@ -251,7 +251,7 @@ Window {
                         id: animationMenu
                         target: leftMenu
                         property: "width"
-                        to: if(leftMenu.width == 70) return 250; else return 70
+                        to: if(leftMenu.width == 70) return 285; else return 70
                         duration: 500
                         easing.type: Easing.InOutQuint
                     }
@@ -281,32 +281,44 @@ Window {
                         LeftMenuBtn {
                             id: btnUpload
                             width: leftMenu.width
-                            text: qsTr("Home")
+                            text: qsTr("Upload File")
                             btnIconSource: "../images/svg_images/open_icon.svg"
                         }
 
                         LeftMenuBtn {
                             id: btnSCS
                             width: leftMenu.width
-                            text: qsTr("Home")
+                            text: qsTr("Shortest Common Superstring")
+                            iconWidth: 18
+                            iconHeight: 18
+                            btnIconSource: "../images/svg_images/one_icon.png"
                         }
 
                         LeftMenuBtn {
                             id: btnSCSGreedy
                             width: leftMenu.width
-                            text: qsTr("Home")
+                            text: qsTr("Greedy SCS")
+                            iconWidth: 20
+                            iconHeight: 20
+                            btnIconSource: "../images/svg_images/two_icon.png"
                         }
 
                         LeftMenuBtn {
                             id: btnOLC
                             width: leftMenu.width
-                            text: qsTr("Home")
+                            text: qsTr("Overlap-Layout-Consensus")
+                            iconWidth: 20
+                            iconHeight: 20
+                            btnIconSource: "../images/svg_images/three_icon.png"
                         }
 
                         LeftMenuBtn {
                             id: btnDG
                             width: leftMenu.width
-                            text: qsTr("Home")
+                            text: qsTr("DeBrujin Graph")
+                            iconWidth: 20
+                            iconHeight: 20
+                            btnIconSource: "../images/svg_images/four_icon.png"
                         }
                     }
 
