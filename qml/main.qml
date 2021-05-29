@@ -29,17 +29,30 @@ Window {
     QtObject {
         id: internal
 
+        function resetResizeBorders(){
+            // Resize visibility
+            resizeLeft.visible = true
+            resizeRight.visible = true
+            resizeBottom.visible = true
+            resizeWindow.visible = true
+        }
+
         function maximizeRestore(){
             if(windowStatus == 0){
                 mainWindow.showMaximized()
                 windowStatus = 1
                 windowMargin = 0
+                resizeLeft.visible = false
+                resizeRight.visible = false
+                resizeBottom.visible = false
+                resizeWindow.visible = false
                 btnMaximizeRestore.btnIconSource = "../images/svg_images/restore_icon.svg"
             }
             else{
                 mainWindow.showNormal()
                 windowStatus = 0
                 windowMargin = 10
+                internal.resetResizeBorders()
                 btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
             }
         }
@@ -49,6 +62,7 @@ Window {
                 mainWindow.showNormal()
                 windowStatus = 0
                 windowMargin = 10
+                internal.resetResizeBorders()
                 btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
             }
         }
@@ -56,6 +70,7 @@ Window {
         function restoreMargins(){
             windowStatus = 0
             windowMargin = 10
+            internal.resetResizeBorders()
             btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
         }
     }
@@ -233,6 +248,7 @@ Window {
                 anchors.right: parent.right
                 anchors.top: topBar.bottom
                 anchors.bottom: parent.bottom
+                clip: true
                 anchors.topMargin: 0
 
                 Rectangle {
@@ -276,6 +292,11 @@ Window {
                             width: leftMenu.width
                             text: qsTr("Home")
                             isActiveMenu: true
+                            onClicked: {
+                                btnHome.isActiveMenu = true
+                                btnInfo.isActiveMenu = false
+                                stackView.push(Qt.resolvedUrl("pages/homePage.qml"))
+                            }
                         }
 
                         LeftMenuBtn {
@@ -323,13 +344,18 @@ Window {
                     }
 
                     LeftMenuBtn {
-                        id: btnSettings
+                        id: btnInfo
                         width: leftMenu.width
                         text: qsTr("Home")
                         anchors.bottom: parent.bottom
-                        btnIconSource: "../images/svg_images/settings_icon.svg"
+                        btnIconSource: "../images/svg_images/info_icon.png"
                         clip: false
                         anchors.bottomMargin: 25
+                        onClicked: {
+                            btnHome.isActiveMenu = false
+                            btnInfo.isActiveMenu = true
+                            stackView.push(Qt.resolvedUrl("pages/infoPage.qml"))
+                        }
                     }
                 }
 
@@ -340,10 +366,17 @@ Window {
                     anchors.right: parent.right
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
+                    clip: true
                     anchors.rightMargin: 0
                     anchors.leftMargin: 0
                     anchors.bottomMargin: 25
                     anchors.topMargin: 0
+
+                    StackView {
+                        id: stackView
+                        anchors.fill: parent
+                        initialItem: Qt.resolvedUrl("pages/homePage.qml")
+                    }
                 }
 
                 Rectangle {
@@ -374,7 +407,7 @@ Window {
                         anchors.topMargin: 0
                     }
                     MouseArea {
-                        id: mouseArea
+                        id: resizeWindow
                         x: 884
                         y: 0
                         opacity: 0.5
@@ -393,11 +426,14 @@ Window {
 
                         Image {
                             id: resizeImage
+                            width: 16
+                            height: 16
                             anchors.fill: parent
                             source: "../images/svg_images/resize_icon.svg"
                             sourceSize.height: 16
                             sourceSize.width: 16
                             fillMode: Image.PreserveAspectFit
+                            antialiasing: false
                         }
 
                     }
@@ -492,6 +528,6 @@ Window {
 }
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:31}D{i:35}
+    D{i:0;formeditorZoom:0.66}D{i:29}
 }
 ##^##*/
