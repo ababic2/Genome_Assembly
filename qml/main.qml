@@ -9,6 +9,10 @@ Window {
     title: qsTr("Genome Assembly")
     width: 1000
     height: 580
+
+    //define min height/width because of resizing window with mouse
+    minimumHeight: 500
+    minimumWidth: 800
     visible: true
     color: "#00000000"
     property alias topBarDescription: topBarDescription
@@ -26,34 +30,34 @@ Window {
         id: internal
 
         function maximizeRestore(){
-                    if(windowStatus == 0){
-                        mainWindow.showMaximized()
-                        windowStatus = 1
-                        windowMargin = 0
-                        btnMaximizeRestore.btnIconSource = "../images/svg_images/restore_icon.svg"
-                    }
-                    else{
-                        mainWindow.showNormal()
-                        windowStatus = 0
-                        windowMargin = 10
-                        btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
-                    }
-                }
+            if(windowStatus == 0){
+                mainWindow.showMaximized()
+                windowStatus = 1
+                windowMargin = 0
+                btnMaximizeRestore.btnIconSource = "../images/svg_images/restore_icon.svg"
+            }
+            else{
+                mainWindow.showNormal()
+                windowStatus = 0
+                windowMargin = 10
+                btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
+            }
+        }
 
         function ifMaximizedWindowRestore(){
-                    if(windowStatus == 1){
-                        mainWindow.showNormal()
-                        windowStatus = 0
-                        windowMargin = 10
-                        btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
-                    }
-                }
+            if(windowStatus == 1){
+                mainWindow.showNormal()
+                windowStatus = 0
+                windowMargin = 10
+                btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
+            }
+        }
 
         function restoreMargins(){
-                    windowStatus = 0
-                    windowMargin = 10
-                    btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
-                }
+            windowStatus = 0
+            windowMargin = 10
+            btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
+        }
     }
 
     Rectangle {
@@ -361,20 +365,92 @@ Window {
             }
         }
     }
+
+    MouseArea {
+        id: resizeLeft
+        width: 10
+        height: 580
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: 0
+        anchors.bottomMargin: 10
+        anchors.topMargin: 10
+        cursorShape: Qt.SizeHorCursor
+
+        DragHandler {
+            target: null
+            onActiveChanged: if(active) { mainWindow.startSystemResize(Qt.LeftEdge)}
+        }
+    }
+
+    MouseArea {
+        id: resizeRight
+        width: 10
+        height: 580
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 0
+        anchors.bottomMargin: 10
+        anchors.topMargin: 10
+        cursorShape: Qt.SizeHorCursor
+
+        DragHandler {
+            target: null
+            onActiveChanged: if(active) { mainWindow.startSystemResize(Qt.RightEdge)}
+        }
+    }
+
+    MouseArea {
+        id: resizeBottom
+        height: 10
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 10
+        anchors.leftMargin: 10
+        anchors.bottomMargin: 0
+        cursorShape: Qt.SizeVerCursor
+
+        DragHandler {
+            target: null
+            onActiveChanged: if(active) { mainWindow.startSystemResize(Qt.BottomEdge)}
+        }
+    }
+
+    MouseArea {
+        id: resizeTop
+        height: 10
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.rightMargin: 10
+        anchors.leftMargin: 10
+        cursorShape: Qt.SizeVerCursor
+
+        DragHandler {
+            target: null
+            onActiveChanged: if(active) { mainWindow.startSystemResize(Qt.TopEdge)}
+        }
+    }
+
     //Sjena oko glavnog prozora
     DropShadow{
-          anchors.fill: bg
-          horizontalOffset: 0
-          verticalOffset: 0
-          radius: 10
-          samples: 16
-          color: "#80000000"
-          source: bg
-          z: 0
-      }
+        anchors.fill: bg
+        horizontalOffset: 0
+        verticalOffset: 0
+        radius: 10
+        samples: 16
+        color: "#80000000"
+        source: bg
+        z: 0
+    }
+
 }
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}
+    D{i:0;formeditorZoom:0.66}D{i:31}D{i:35}
 }
 ##^##*/
