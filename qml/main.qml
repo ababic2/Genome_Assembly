@@ -315,6 +315,17 @@ Window {
             }
         }
     }
+    //Sjena oko glavnog prozora
+    DropShadow{
+          anchors.fill: bg
+          horizontalOffset: 0
+          verticalOffset: 0
+          radius: 10
+          samples: 16
+          color: "#80000000"
+          source: bg
+          z: 0
+      }
 }
 /*##^##
 Designer {
