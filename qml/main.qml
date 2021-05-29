@@ -11,6 +11,11 @@ Window {
     visible: true
     color: "#00000000"
     property alias topBarDescription: topBarDescription
+
+    //REMOVING TITLE BAR
+    //The window flags control the window's appearance
+    flags: Qt.Window | Qt.FramelessWindowHint
+
     title: qsTr("Genome Assembly")
 
     Rectangle {
