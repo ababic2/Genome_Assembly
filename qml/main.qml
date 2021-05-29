@@ -114,6 +114,12 @@ Window {
                     anchors.leftMargin: 70
                     anchors.topMargin: 0
 
+                    DragHandler {
+                        onActiveChanged: if(active) {
+                                             mainWindow.startSystemMove()
+                                         }
+                    }
+
                     Image {
                         id: iconApp
                         width: 22
