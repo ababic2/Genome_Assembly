@@ -13,7 +13,6 @@ Window {
     property alias topBarDescription: topBarDescription
     title: qsTr("Genome Assembly")
 
-
     Rectangle {
         id: bg
         color: "#2c313c"
@@ -52,6 +51,7 @@ Window {
                 anchors.topMargin: 0
 
                 ToggleButton {
+                    onClicked: animationMenu.running = true
                 }
 
                 Rectangle {
@@ -111,11 +111,12 @@ Window {
 
                     Image {
                         id: iconApp
-                        width: 28
+                        width: 22
+                        height: 22
                         anchors.left: parent.left
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
-                        source: "qrc:/qtquickplugin/images/template_image.png"
+                        source: "../images/svg_images/dna_icon.svg"
                         anchors.leftMargin: 5
                         anchors.bottomMargin: 0
                         anchors.topMargin: 0
@@ -184,6 +185,15 @@ Window {
                     anchors.bottomMargin: 0
                     anchors.leftMargin: 0
                     anchors.topMargin: 0
+
+                    PropertyAnimation{
+                        id: animationMenu
+                        target: leftMenu
+                        property: "width"
+                        to: if(leftMenu.width == 70) return 250; else return 70
+                        duration: 500
+                        easing.type: Easing.InOutQuint
+                    }
 
                     Column {
                         id: columnMenus
@@ -297,6 +307,6 @@ Window {
 }
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:13}D{i:14}D{i:24}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/
