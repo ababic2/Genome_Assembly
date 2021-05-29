@@ -293,8 +293,13 @@ Window {
                             text: qsTr("Home")
                             isActiveMenu: true
                             onClicked: {
-                                btnHome.isActiveMenu = true
+                                btnSCS.isActiveMenu = false
                                 btnInfo.isActiveMenu = false
+                                btnHome.isActiveMenu = true
+                                btnSCSGreedy.isActiveMenu = false
+                                btnOLC.isActiveMenu = false
+                                btnDG.isActiveMenu = false
+                                btnUpload.isActiveMenu = false
                                 stackView.push(Qt.resolvedUrl("pages/homePage.qml"))
                             }
                         }
@@ -304,6 +309,15 @@ Window {
                             width: leftMenu.width
                             text: qsTr("Upload File")
                             btnIconSource: "../images/svg_images/open_icon.svg"
+                            onClicked: {
+                                btnSCS.isActiveMenu = false
+                                btnInfo.isActiveMenu = false
+                                btnHome.isActiveMenu = false
+                                btnSCSGreedy.isActiveMenu = false
+                                btnOLC.isActiveMenu = false
+                                btnDG.isActiveMenu = false
+                                btnUpload.isActiveMenu = true
+                            }
                         }
 
                         LeftMenuBtn {
@@ -313,6 +327,16 @@ Window {
                             iconWidth: 18
                             iconHeight: 18
                             btnIconSource: "../images/svg_images/one_icon.png"
+                            onClicked: {
+                                btnSCS.isActiveMenu = true
+                                btnInfo.isActiveMenu = false
+                                btnHome.isActiveMenu = false
+                                btnSCSGreedy.isActiveMenu = false
+                                btnOLC.isActiveMenu = false
+                                btnDG.isActiveMenu = false
+                                btnUpload.isActiveMenu = false
+                                stackView.push(Qt.resolvedUrl("pages/scsPage.qml"))
+                            }
                         }
 
                         LeftMenuBtn {
@@ -322,6 +346,16 @@ Window {
                             iconWidth: 20
                             iconHeight: 20
                             btnIconSource: "../images/svg_images/two_icon.png"
+                            onClicked: {
+                                btnSCS.isActiveMenu = false
+                                btnInfo.isActiveMenu = false
+                                btnHome.isActiveMenu = false
+                                btnSCSGreedy.isActiveMenu = true
+                                btnOLC.isActiveMenu = false
+                                btnDG.isActiveMenu = false
+                                btnUpload.isActiveMenu = false
+                                stackView.push(Qt.resolvedUrl("pages/gscsPage.qml"))
+                            }
                         }
 
                         LeftMenuBtn {
@@ -331,6 +365,16 @@ Window {
                             iconWidth: 20
                             iconHeight: 20
                             btnIconSource: "../images/svg_images/three_icon.png"
+                            onClicked: {
+                                btnSCS.isActiveMenu = false
+                                btnInfo.isActiveMenu = false
+                                btnHome.isActiveMenu = false
+                                btnSCSGreedy.isActiveMenu = false
+                                btnOLC.isActiveMenu = true
+                                btnDG.isActiveMenu = false
+                                btnUpload.isActiveMenu = false
+                                stackView.push(Qt.resolvedUrl("pages/olcPage.qml"))
+                            }
                         }
 
                         LeftMenuBtn {
@@ -340,6 +384,16 @@ Window {
                             iconWidth: 20
                             iconHeight: 20
                             btnIconSource: "../images/svg_images/four_icon.png"
+                            onClicked: {
+                                btnSCS.isActiveMenu = false
+                                btnInfo.isActiveMenu = false
+                                btnHome.isActiveMenu = false
+                                btnSCSGreedy.isActiveMenu = false
+                                btnOLC.isActiveMenu = false
+                                btnDG.isActiveMenu = true
+                                btnUpload.isActiveMenu = false
+                                stackView.push(Qt.resolvedUrl("pages/dgPage.qml"))
+                            }
                         }
                     }
 
@@ -352,8 +406,13 @@ Window {
                         clip: false
                         anchors.bottomMargin: 25
                         onClicked: {
-                            btnHome.isActiveMenu = false
+                            btnSCS.isActiveMenu = false
                             btnInfo.isActiveMenu = true
+                            btnHome.isActiveMenu = false
+                            btnSCSGreedy.isActiveMenu = false
+                            btnOLC.isActiveMenu = false
+                            btnDG.isActiveMenu = false
+                            btnUpload.isActiveMenu = false
                             stackView.push(Qt.resolvedUrl("pages/infoPage.qml"))
                         }
                     }
