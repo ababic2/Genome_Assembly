@@ -3,6 +3,7 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtGraphicalEffects 1.15
 import "controls"
+import "functions"
 
 Window {
     id: mainWindow
@@ -31,6 +32,7 @@ Window {
         anchors.leftMargin: 10
         anchors.bottomMargin: 10
         anchors.topMargin: 10
+        z: 1
 
         Rectangle {
             id: appContainer
@@ -137,7 +139,7 @@ Window {
                     Label {
                         id: label
                         color: "#c3cbdd"
-                        text: qsTr("My App Title")
+                        text: qsTr("Genome Assemlby")
                         anchors.left: iconApp.right
                         anchors.right: parent.right
                         anchors.top: parent.top
@@ -160,18 +162,20 @@ Window {
 
                     TopBarButton{
                         id: btnMinimize
-
+                        onClicked: mainWindow.showMinimized()
                     }
 
                     TopBarButton {
                         id: btnMaximizeRestore
                         btnIconSource: "../images/svg_images/maximize_icon.svg"
+                        onClicked: internal.maximizeRestore()
                     }
 
                     TopBarButton {
                         id: btnClose
                         colorClicked: "#f1000c"
                         btnIconSource: "../images/svg_images/close_icon.svg"
+                        onClicked: mainWindow.close()
                     }
                 }
             }
@@ -301,7 +305,7 @@ Window {
                         id: labelExtraInfo
                         height: 25
                         color: "#5f6a82"
-                        text: qsTr("App Info")
+                        text: qsTr("https://github.com/ababic2/Genome_Assembly")
                         anchors.left: parent.left
                         anchors.right: parent.right
                         anchors.top: parent.top
