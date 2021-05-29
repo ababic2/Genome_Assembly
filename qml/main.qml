@@ -180,6 +180,7 @@ Window {
                     anchors.left: parent.left
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
+                    clip: true
                     anchors.bottomMargin: 0
                     anchors.leftMargin: 0
                     anchors.topMargin: 0
@@ -188,10 +189,12 @@ Window {
                         id: columnMenus
                         width: 200
                         height: 400
+                        visible: true
                         anchors.left: parent.left
                         anchors.right: parent.right
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
+                        clip: false
                         anchors.rightMargin: 0
                         anchors.leftMargin: 0
                         anchors.bottomMargin: 90
@@ -199,9 +202,51 @@ Window {
 
                         LeftMenuBtn {
                             id: btnHome
-                            width: 70
+                            width: leftMenu.width
+                            text: qsTr("Home")
+                            isActiveMenu: true
+                        }
+
+                        LeftMenuBtn {
+                            id: btnUpload
+                            width: leftMenu.width
+                            text: qsTr("Home")
+                            btnIconSource: "../images/svg_images/open_icon.svg"
+                        }
+
+                        LeftMenuBtn {
+                            id: btnSCS
+                            width: leftMenu.width
                             text: qsTr("Home")
                         }
+
+                        LeftMenuBtn {
+                            id: btnSCSGreedy
+                            width: leftMenu.width
+                            text: qsTr("Home")
+                        }
+
+                        LeftMenuBtn {
+                            id: btnOLC
+                            width: leftMenu.width
+                            text: qsTr("Home")
+                        }
+
+                        LeftMenuBtn {
+                            id: btnDG
+                            width: leftMenu.width
+                            text: qsTr("Home")
+                        }
+                    }
+
+                    LeftMenuBtn {
+                        id: btnSettings
+                        width: leftMenu.width
+                        text: qsTr("Home")
+                        anchors.bottom: parent.bottom
+                        btnIconSource: "../images/svg_images/settings_icon.svg"
+                        clip: false
+                        anchors.bottomMargin: 25
                     }
                 }
 
@@ -252,6 +297,6 @@ Window {
 }
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:13}D{i:14}
+    D{i:0;formeditorZoom:0.66}D{i:13}D{i:14}D{i:24}
 }
 ##^##*/

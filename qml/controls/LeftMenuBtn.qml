@@ -4,7 +4,6 @@ import QtGraphicalEffects 1.15
 
 Button {
     id: btnLeftMenu
-    text: qsTr("Left Menu Text")
 
     //CUSTOM PROPERTIES
     property url btnIconSource: "../../images/svg_images/home_icon.svg"
@@ -15,7 +14,7 @@ Button {
     property color activeMenuColorRight: "#2c313c"
     property int iconWidth: 18
     property int iconHeight: 18
-    property bool isActiveMenu: true
+    property bool isActiveMenu: false
 
     // QTObject will contain function that will be called when btn is pressed or mouse is over CustomBtn
     QtObject{
