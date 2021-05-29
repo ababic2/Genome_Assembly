@@ -373,6 +373,34 @@ Window {
                         anchors.rightMargin: 30
                         anchors.topMargin: 0
                     }
+                    MouseArea {
+                        id: mouseArea
+                        x: 884
+                        y: 0
+                        opacity: 0.5
+                        width: 25
+                        height: 25
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        anchors.rightMargin: 0
+                        anchors.bottomMargin: 0
+                        cursorShape: Qt.SizeFDiagCursor
+
+                        DragHandler {
+                            target: null
+                            onActiveChanged: if(active) { mainWindow.startSystemResize(Qt.RightEdge | Qt.BottomEdge)}
+                        }
+
+                        Image {
+                            id: resizeImage
+                            anchors.fill: parent
+                            source: "../images/svg_images/resize_icon.svg"
+                            sourceSize.height: 16
+                            sourceSize.width: 16
+                            fillMode: Image.PreserveAspectFit
+                        }
+
+                    }
                 }
             }
         }
@@ -459,6 +487,7 @@ Window {
         source: bg
         z: 0
     }
+
 
 }
 /*##^##
