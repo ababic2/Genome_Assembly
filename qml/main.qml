@@ -3,10 +3,10 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtGraphicalEffects 1.15
 import "controls"
-import "functions"
 
 Window {
     id: mainWindow
+    title: qsTr("Genome Assembly")
     width: 1000
     height: 580
     visible: true
@@ -17,7 +17,44 @@ Window {
     //The window flags control the window's appearance
     flags: Qt.Window | Qt.FramelessWindowHint
 
-    title: qsTr("Genome Assembly")
+    //Window status for maximize and restore
+    property int windowStatus: 0
+    property int windowMargin: 10
+
+    // Funkcije za Max/Min/restore window
+    QtObject {
+        id: internal
+
+        function maximizeRestore(){
+                    if(windowStatus == 0){
+                        mainWindow.showMaximized()
+                        windowStatus = 1
+                        windowMargin = 0
+                        btnMaximizeRestore.btnIconSource = "../images/svg_images/restore_icon.svg"
+                    }
+                    else{
+                        mainWindow.showNormal()
+                        windowStatus = 0
+                        windowMargin = 10
+                        btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
+                    }
+                }
+
+        function ifMaximizedWindowRestore(){
+                    if(windowStatus == 1){
+                        mainWindow.showNormal()
+                        windowStatus = 0
+                        windowMargin = 10
+                        btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
+                    }
+                }
+
+        function restoreMargins(){
+                    windowStatus = 0
+                    windowMargin = 10
+                    btnMaximizeRestore.btnIconSource = "../images/svg_images/maximize_icon.svg"
+                }
+    }
 
     Rectangle {
         id: bg
@@ -28,10 +65,10 @@ Window {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        anchors.rightMargin: 10
-        anchors.leftMargin: 10
-        anchors.bottomMargin: 10
-        anchors.topMargin: 10
+        anchors.rightMargin: windowMargin
+        anchors.leftMargin: windowMargin
+        anchors.bottomMargin: windowMargin
+        anchors.topMargin: windowMargin
         z: 1
 
         Rectangle {
@@ -119,6 +156,7 @@ Window {
                     DragHandler {
                         onActiveChanged: if(active) {
                                              mainWindow.startSystemMove()
+                                             internal.ifMaximizedWindowRestore()
                                          }
                     }
 
@@ -162,8 +200,12 @@ Window {
 
                     TopBarButton{
                         id: btnMinimize
-                        onClicked: mainWindow.showMinimized()
+                        onClicked: {
+                            mainWindow.showMinimized()
+                            internal.restoreMargins()
+                        }
                     }
+
 
                     TopBarButton {
                         id: btnMaximizeRestore
