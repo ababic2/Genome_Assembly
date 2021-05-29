@@ -23,12 +23,14 @@ Button {
     }
 
     implicitWidth: 70
-    implicitHeight: 68
+    implicitHeight: 60
 
     background: Rectangle{
         id:bgBtn
         color: internal.dynamicColor
-
+    }
+    contentItem: Item {
+        id: content
         Image {
             id: iconBtn
             source: btnIconSource

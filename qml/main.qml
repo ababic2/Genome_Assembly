@@ -197,9 +197,10 @@ Window {
                         anchors.bottomMargin: 90
                         anchors.topMargin: 0
 
-                        Button {
-                            id: button
-                            text: qsTr("Button")
+                        LeftMenuBtn {
+                            id: btnHome
+                            width: 70
+                            text: qsTr("Home")
                         }
                     }
                 }
