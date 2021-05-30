@@ -1,16 +1,37 @@
 # This Python file uses the following encoding: utf-8
 import os
-from pathlib import Path
 import sys
 
 from PySide2.QtGui import QGuiApplication
 from PySide2.QtQml import QQmlApplicationEngine
+from PySide2.QtCore import QObject, Slot, Signal, QTimer, QUrl
 
+class MainWindow(QObject):
+    def __init__(self):
+        QObject.__init__(self)
+    # Signal is used to send data to interface using function
+    # Open File To Text Edit
+    readText = Signal(str)
+    # Open File
+    @Slot(str)
+    def openFile(self, filePath):
+        file = open(QUrl(filePath).toLocalFile(), encoding="utf-8")
+        text = file.read()
+        file.close()
+        print(text)
+        self.readText.emit(str(text))
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
     engine = QQmlApplicationEngine()
-    engine.load(os.path.join(os.path.dirname(__file__),"qml/main.qml"))
+
+    # Get Context
+    main = MainWindow()
+    engine.rootContext().setContextProperty("backend", main)
+
+    # Load QMLFile
+    engine.load(os.path.join(os.path.dirname(__file__), "qml/main.qml"))
+
     if not engine.rootObjects():
         sys.exit(-1)
     sys.exit(app.exec_())

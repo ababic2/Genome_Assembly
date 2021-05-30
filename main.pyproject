@@ -1,3 +1,3 @@
 {
-    "files": ["qml/controls/CustomBtn.qml","qml/pages/scsPage.qml","qml/controls/LeftMenuBtn.qml","qml/controls/ToggleButton.qml","qml/pages/homePage.qml","qml/pages/infoPage.qml","qml/controls/TopBarButton.qml","main.qml","qml/functions/FunctionMaxRestore.qml","qml/pages/olcPage.qml","main.py","qml/pages/gscsPage.qml","qml/pages/dgPage.qml"]
+    "files": ["qml/pages/infoPage.qml","qml/pages/gscsPage.qml","qml/controls/CustomBtn.qml","qml/controls/ToggleButton.qml","main.qml","qml/pages/dgPage.qml","qml/pages/scsPage.qml","qml/controls/LeftMenuBtn.qml","main.py","qml/pages/olcPage.qml","qml/functions/FunctionMaxRestore.qml","qml/controls/TopBarButton.qml","qml/pages/homePage.qml","qml/pages/fileView.qml"]
 }

@@ -3,6 +3,7 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtGraphicalEffects 1.15
 import "controls"
+import QtQuick.Dialogs 1.3
 
 Window {
     id: mainWindow
@@ -24,6 +25,9 @@ Window {
     //Window status for maximize and restore
     property int windowStatus: 0
     property int windowMargin: 10
+
+    // Text Edit Properties
+    property alias actualPage: stackView.currentItem
 
     // Funkcije za Max/Min/restore window
     QtObject {
@@ -301,6 +305,7 @@ Window {
                                 btnDG.isActiveMenu = false
                                 btnUpload.isActiveMenu = false
                                 stackView.push(Qt.resolvedUrl("pages/homePage.qml"))
+
                             }
                         }
 
@@ -309,17 +314,25 @@ Window {
                             width: leftMenu.width
                             text: qsTr("Upload File")
                             btnIconSource: "../images/svg_images/open_icon.svg"
-                            onClicked: {
-                                btnSCS.isActiveMenu = false
-                                btnInfo.isActiveMenu = false
+                            onPressed: {
+                                fileOpen.open()
                                 btnHome.isActiveMenu = false
-                                btnSCSGreedy.isActiveMenu = false
-                                btnOLC.isActiveMenu = false
-                                btnDG.isActiveMenu = false
                                 btnUpload.isActiveMenu = true
+                                stackView.push(Qt.resolvedUrl("pages/fileView.qml"))
+
+                            }
+
+                            FileDialog{
+                                id: fileOpen
+                                title: "Please choose a file"
+                                folder: shortcuts.home
+                                selectMultiple: false
+                                nameFilters: ["Text File (*.txt)"]
+                                onAccepted: {
+                                    backend.openFile(fileOpen.fileUrl)
+                                }
                             }
                         }
-
                         LeftMenuBtn {
                             id: btnSCS
                             width: leftMenu.width
@@ -583,10 +596,17 @@ Window {
         z: 0
     }
 
+    Connections{
+            target: backend
+
+            function onReadText(text){
+                actualPage.setText = text
+            }
+        }
 
 }
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:29}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/
