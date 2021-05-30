@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 2.15
 
 Item {
-    property string getText: textArea.text
+    property string getText: text1.text
     property string setText: ""
 
     Rectangle {
