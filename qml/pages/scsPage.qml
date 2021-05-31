@@ -39,6 +39,7 @@ Item {
                 anchors.right: parent.right
                 anchors.top: resultLabel.bottom
                 anchors.bottom: parent.bottom
+                clip: true
                 anchors.rightMargin: 5
                 anchors.leftMargin: 5
                 anchors.bottomMargin: 5
@@ -49,11 +50,12 @@ Item {
                     text: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt;\">ATATATATATATTATATTATATT</span></p></body></html>"
                     anchors.fill: parent
                     font.pixelSize: 12
+                    clip: true
                     textFormat: Text.RichText
-                    anchors.topMargin: 30
-                    anchors.rightMargin: 30
-                    anchors.leftMargin: 30
-                    anchors.bottomMargin: 30
+                    anchors.topMargin: 0
+                    anchors.rightMargin: 0
+                    anchors.leftMargin: 0
+                    anchors.bottomMargin: 1
                 }
             }
 
@@ -96,6 +98,10 @@ Item {
                     highlighted: true
                     layer.textureMirroring: ShaderEffectSource.MirrorVertically
                     anchors.bottomMargin: 0
+
+                    onPressed: {
+                        backend.setResult("");
+                    }
                 }
             }
 
@@ -114,5 +120,16 @@ Item {
             }
         }
     }
-
+    Connections{
+        target: backend
+        function onGetResult(text) {
+            text1.text = text
+        }
+    }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/

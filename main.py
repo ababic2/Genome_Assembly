@@ -21,9 +21,17 @@ class MainWindow(QObject):
         file = open(QUrl(filePath).toLocalFile(), encoding="utf-8")
         text = file.read()
         file.close()
+        global genome
         genome = readGenome(filePath)
         print(genome[:100])
         self.readText.emit(str(text))
+
+    getResult = Signal(str)
+    # Slot for SCS
+    @Slot(str)
+    def setResult(self, text):
+        print("EVOOO " + genome[:100])
+        self.getResult.emit(str(genome))
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
