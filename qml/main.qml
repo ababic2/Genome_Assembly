@@ -327,7 +327,7 @@ Window {
                                 title: "Please choose a file"
                                 folder: shortcuts.home
                                 selectMultiple: false
-                                nameFilters: ["Text File (*.fa)"]
+                                nameFilters: ["FASTA (*.fa)", "Text File (*.txt)"]
                                 onAccepted: {
                                     backend.openFile(fileOpen.fileUrl)
                                 }

@@ -6,6 +6,7 @@ from PySide2.QtGui import QGuiApplication
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtCore import QObject, Slot, Signal, QTimer, QUrl
 from py_functions.readGenome import readGenome
+from py_functions.scsAlgorithm import scs, readFile, getListOfReads
 
 class MainWindow(QObject):
     def __init__(self):
@@ -26,12 +27,22 @@ class MainWindow(QObject):
         print(genome[:100])
         self.readText.emit(str(text))
 
-    getResult = Signal(str)
-    # Slot for SCS
+    # Slot for SCS read file
     @Slot(str)
-    def setResult(self, text):
-        print("EVOOO " + genome[:100])
-        self.getResult.emit(str(genome))
+    def readFile(self, filePath):
+        lines = readFile(filePath)
+        global listOfReads
+        listOfReads = []
+        listOfReads.extend(getListOfReads(lines))
+
+    setResult = Signal(str)
+    # Slot for SCS run File
+    @Slot(str)
+    def runSCS(self, text):
+        result = scs(listOfReads)
+        print("HEE HEEE")
+        print(str(listOfReads[0]))
+        self.setResult.emit(str(result))
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
