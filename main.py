@@ -48,7 +48,7 @@ class MainWindow(QObject):
 
     @Slot(str)
     def runGSCS(self, text):
-        result = gscs(listOfReads)
+        result = gscs(listOfReads, 2)
         self.setResult.emit(str(result))
 
 if __name__ == "__main__":

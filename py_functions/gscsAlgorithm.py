@@ -13,5 +13,11 @@ def max_overlap(reads, k):
             bestOverlapLength = currentOverlapLength
     return readA, readB, bestOverlapLength
 
-def gscs(ss):
-
+def gscs(reads, k):
+    readA, readB, olen = max_overlap(reads, k)
+    while olen > 0:
+        reads.remove(readA)
+        reads.remove(readB)
+        reads.append(readA + readB[olen:])
+        readA, readB, olen = max_overlap(reads, k)
+    return ''.join(reads)
