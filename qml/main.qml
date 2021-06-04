@@ -337,9 +337,9 @@ Window {
                             id: btnSCS
                             width: leftMenu.width
                             text: qsTr("Shortest Common Superstring")
-                            iconWidth: 18
-                            iconHeight: 18
-                            btnIconSource: "../images/svg_images/one_icon.png"
+                            iconWidth: 20
+                            iconHeight: 20
+                            btnIconSource: "../../../Downloads/scs.svg"
                             onClicked: {
                                 btnSCS.isActiveMenu = true
                                 btnInfo.isActiveMenu = false
