@@ -6,7 +6,9 @@ from PySide2.QtGui import QGuiApplication
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtCore import QObject, Slot, Signal, QTimer, QUrl
 from py_functions.readGenome import readGenome
-from py_functions.scsAlgorithm import scs, readFile, getListOfReads
+from py_functions.scsAlgorithm import scs
+from py_functions.readFileAndGetReads import getListOfReads, readFile
+from py_functions.gscsAlgorithm import gscs
 
 class MainWindow(QObject):
     def __init__(self):
@@ -42,6 +44,11 @@ class MainWindow(QObject):
         result = scs(listOfReads)
         print("HEE HEEE")
         print(str(listOfReads[0]))
+        self.setResult.emit(str(result))
+
+    @Slot(str)
+    def runGSCS(self, text):
+        result = gscs(listOfReads)
         self.setResult.emit(str(result))
 
 if __name__ == "__main__":

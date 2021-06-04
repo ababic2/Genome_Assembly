@@ -1,27 +1,7 @@
 import itertools
+from py_functions.overlapFunction import overlap
+from py_functions.readFileAndGetReads import getListOfReads, readFile
 from PySide2.QtCore import QUrl
-
-def readFile(filePath):
-    file = open(QUrl(filePath).toLocalFile(), encoding="utf-8")
-    lines = file.readlines()
-    file.close()
-    return lines
-
-def getListOfReads(lines):
-    readList = []
-    for line in lines:
-        readList += [line.strip()]
-    return readList
-
-def overlap(a, b, min_length = 3):
-    start = 0
-    while True:
-        start = a.find(b[:min_length], start)
-        if start == -1:
-            return 0
-        if b.startswith(a[start:]):
-            return len(a) - start
-        start += 1
 
 def scs(ss):
     shortest_sup = None
