@@ -5,7 +5,7 @@ These reads need to be put together, so that the original sequence can be obtain
 Since there is no reference genome, this is De novo genome assembly, meaning from scratch.  
 There are four ways to do this and algorithms are implemented in backend.  
 
-<img src= /appGifs/DnaGenomeAssembly.gif width="800" height="450" />
+<img src= /appGifs/gifForGenome.gif width="800" height="460" />
 
 ## Shortest common superstring (SCS)
 
