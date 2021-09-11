@@ -11,7 +11,7 @@ Item {
         Image {
             id: image
             anchors.fill: parent
-            source: "../../../../Downloads/dnaHp-removebg-preview.png"
+            source: "../../../dnaHp.jpg"
             fillMode: Image.Stretch
 
             Label {

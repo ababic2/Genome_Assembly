@@ -5,6 +5,7 @@ import QtGraphicalEffects 1.15
 import "controls"
 import QtQuick.Dialogs 1.3
 
+
 Window {
     id: mainWindow
     title: qsTr("Genome Assembly")
@@ -301,7 +302,7 @@ Window {
                                 btnInfo.isActiveMenu = false
                                 btnHome.isActiveMenu = true
                                 btnSCSGreedy.isActiveMenu = false
-                                btnOLC.isActiveMenu = false
+//                                btnOLC.isActiveMenu = false
                                 btnDG.isActiveMenu = false
                                 btnUpload.isActiveMenu = false
                                 stackView.push(Qt.resolvedUrl("pages/homePage.qml"))
@@ -339,13 +340,13 @@ Window {
                             text: qsTr("Shortest Common Superstring")
                             iconWidth: 20
                             iconHeight: 20
-                            btnIconSource: "../../../Downloads/scs.svg"
+                            btnIconSource: "../images/svg_images/one_icon.png"
                             onClicked: {
                                 btnSCS.isActiveMenu = true
                                 btnInfo.isActiveMenu = false
                                 btnHome.isActiveMenu = false
                                 btnSCSGreedy.isActiveMenu = false
-                                btnOLC.isActiveMenu = false
+//                                btnOLC.isActiveMenu = false
                                 btnDG.isActiveMenu = false
                                 btnUpload.isActiveMenu = false
                                 stackView.push(Qt.resolvedUrl("pages/scsPage.qml"))
@@ -364,29 +365,10 @@ Window {
                                 btnInfo.isActiveMenu = false
                                 btnHome.isActiveMenu = false
                                 btnSCSGreedy.isActiveMenu = true
-                                btnOLC.isActiveMenu = false
+//                                btnOLC.isActiveMenu = false
                                 btnDG.isActiveMenu = false
                                 btnUpload.isActiveMenu = false
                                 stackView.push(Qt.resolvedUrl("pages/gscsPage.qml"))
-                            }
-                        }
-
-                        LeftMenuBtn {
-                            id: btnOLC
-                            width: leftMenu.width
-                            text: qsTr("Overlap-Layout-Consensus")
-                            iconWidth: 20
-                            iconHeight: 20
-                            btnIconSource: "../images/svg_images/three_icon.png"
-                            onClicked: {
-                                btnSCS.isActiveMenu = false
-                                btnInfo.isActiveMenu = false
-                                btnHome.isActiveMenu = false
-                                btnSCSGreedy.isActiveMenu = false
-                                btnOLC.isActiveMenu = true
-                                btnDG.isActiveMenu = false
-                                btnUpload.isActiveMenu = false
-                                stackView.push(Qt.resolvedUrl("pages/olcPage.qml"))
                             }
                         }
 
@@ -396,13 +378,13 @@ Window {
                             text: qsTr("DeBrujin Graph")
                             iconWidth: 20
                             iconHeight: 20
-                            btnIconSource: "../images/svg_images/four_icon.png"
+                            btnIconSource: "../images/svg_images/three_icon.png"
                             onClicked: {
                                 btnSCS.isActiveMenu = false
                                 btnInfo.isActiveMenu = false
                                 btnHome.isActiveMenu = false
                                 btnSCSGreedy.isActiveMenu = false
-                                btnOLC.isActiveMenu = false
+//                                btnOLC.isActiveMenu = false
                                 btnDG.isActiveMenu = true
                                 btnUpload.isActiveMenu = false
                                 stackView.push(Qt.resolvedUrl("pages/dgPage.qml"))
@@ -423,7 +405,7 @@ Window {
                             btnInfo.isActiveMenu = true
                             btnHome.isActiveMenu = false
                             btnSCSGreedy.isActiveMenu = false
-                            btnOLC.isActiveMenu = false
+//                            btnOLC.isActiveMenu = false
                             btnDG.isActiveMenu = false
                             btnUpload.isActiveMenu = false
                             stackView.push(Qt.resolvedUrl("pages/infoPage.qml"))
